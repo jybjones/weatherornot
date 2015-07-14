@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
     $scope.modal.show();
   };
 
-  // Open the login modal
+  // display
   $scope.data = function() {
     $scope.query.show();
   };
