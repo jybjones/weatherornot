@@ -8,7 +8,7 @@
             type="search"
             placeholder="Search location..."
             ng-model="$parent.$parent.query"
-            ng-change="$parent.queryChanged()"
+            ng-change="queryChanged()"
           />
         </label>
       </ion-item>
@@ -19,7 +19,7 @@
           lat: result.geometry.location.lat,
           long: result.geometry.location.lng
         })"
-        >
+      >
         {{result.formatted_address}}
       </ion-item>
     </ion-list>
