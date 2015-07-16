@@ -26,6 +26,11 @@
           <i class="icon ion-android-settings"></i>
           Settings
         </ion-item>
+        <!-- divider -->
+        <ion-item class="item-divider">My favorites</ion-item>
+        <!-- item for each location -->
+       <a class="item" href="#" ng-repeat="fav in favorites">{{fav.city}}</a>
+      </ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>

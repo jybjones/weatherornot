@@ -28,7 +28,7 @@ angular.module('starter', [
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
+//////base route of the app here anything in appCtrl is avail in menu//////
   .state('app', {
     url: "/app",
     abstract: true,
