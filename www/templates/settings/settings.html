@@ -1,0 +1,18 @@
+<ion-view view-title="Settings">
+  <ion-content>
+    <ul class="list">
+      <div class="item item-divider">
+        Precision
+      </div>
+      <div class="item range range-positive">
+        12°
+        <input type="range" ng-model="$parent.precision" min="0" max="2">
+        12.34°
+      </div>
+      <div class="item item-divider">
+        Choose your scale adventure
+      </div>
+      <ion-radio ng-repeat="scale in $parent.scales" ng-model="$parent.$parent.scale" ng-value="scale.symbol">{{scale.name}}</ion-radio>
+    </ul>
+  </ion-content>
+</ion-view>

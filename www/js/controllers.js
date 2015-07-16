@@ -34,6 +34,15 @@ angular.module('starter.controllers', [])
     $scope.query.show();
   };
 
+  // settings//
+  // $scope.settings = function(scale, precision) {
+  //   localStorage.getItem($scope.scale, $scope.precision);
+  //   console.log(localStorage)
+  // };
+  // $scope.temps = [
+
+  // ]
+
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
