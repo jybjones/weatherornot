@@ -21,6 +21,15 @@ angular.module('won.weather', [])
       });
   })
 
+  .factory('weather', function ($http) {
+     return {
+       getWeather: function (lat, long) {
+         return $http
+           .get('/api/forecast/' + lat + ',' + long)
+       }
+     };
+   });
+
   //   $http
   //     .get('/api/forecast/' + $stateParams.lat + ',' + $stateParams.long)
   //     .success(function(data) {
@@ -31,19 +40,19 @@ angular.module('won.weather', [])
   //     });
   // })
 //////no HTTP in a CONTROLLER////////////
-  .factory('weather', function (settings, $http) {
-    var API_URL = 'api/forecast/';
+  // .factory('weather', function (settings, $http) {
+    // var API_URL = 'api/forecast/';
     // var SI_PARAM = '?units=si';
 
-    return {
-      getWeather: function (lat, long) {
-        var url = API_URL + lat + ',' + long + '?units=';
-        if (settings.scale === 'C') {
-          url += 'si';
-        } else {
-          url += 'us';
-        }
-        return $http.get(url);
-      }
-    };
-  });
+  //   return {
+  //     getWeather: function (lat, long) {
+  //       var url = API_URL + lat + ',' + long + '?units=';
+  //       if (settings.scale === 'C') {
+  //         url += 'si';
+  //       } else {
+  //         url += 'us';
+  //       }
+  //       return $http.get(url);
+  //     }
+  //   };
+  // });
