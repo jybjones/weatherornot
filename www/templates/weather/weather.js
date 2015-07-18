@@ -5,11 +5,11 @@ angular.module('won.weather', [])
     $scope.city = $stateParams.city;
     $scope.scale = settings.scale;
     $scope.precision = settings.precision;
-    // $scope.settings();
 
     $ionicLoading.show({
       template: '<img src="/img/loading.gif"><h1>Loading...</h1>'
     });
+
 
     weather
       .getWeather($stateParams.lat, $stateParams.long)
@@ -21,14 +21,23 @@ angular.module('won.weather', [])
       });
   })
 
-  .factory('weather', function ($http) {
-     return {
-       getWeather: function (lat, long) {
-         return $http
-           .get('/api/forecast/' + lat + ',' + long)
-       }
-     };
-   });
+  .factory('weather', function (settings, $http) {
+    var API_URL = '/api/forecast/';
+
+    return {
+      getWeather: function (lat, long) {
+        var url = API_URL + lat + ',' + long + '?units=';
+
+        if (settings.scale === 'C') {
+          url += 'si';
+        } else {
+          url += 'us';
+        }
+
+        return $http.get(url);
+      }
+    };
+  });
 
   //   $http
   //     .get('/api/forecast/' + $stateParams.lat + ',' + $stateParams.long)
@@ -44,15 +53,3 @@ angular.module('won.weather', [])
     // var API_URL = 'api/forecast/';
     // var SI_PARAM = '?units=si';
 
-  //   return {
-  //     getWeather: function (lat, long) {
-  //       var url = API_URL + lat + ',' + long + '?units=';
-  //       if (settings.scale === 'C') {
-  //         url += 'si';
-  //       } else {
-  //         url += 'us';
-  //       }
-  //       return $http.get(url);
-  //     }
-  //   };
-  // });

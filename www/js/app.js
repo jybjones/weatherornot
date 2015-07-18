@@ -9,7 +9,8 @@ angular.module('starter', [
   'starter.controllers',
   'won.search',
   'won.weather',
-  'won.settings'
+  'won.settings',
+  'won.menu'
 ])
 
 .run(function($ionicPlatform) {
@@ -28,11 +29,11 @@ angular.module('starter', [
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-//////base route of the app here anything in appCtrl is avail in menu//////
+
   .state('app', {
     url: "/app",
     abstract: true,
-    templateUrl: "templates/menu.html",
+    templateUrl: "templates/menu/menu.html",
     controller: 'AppCtrl'
   })
 
@@ -46,6 +47,16 @@ angular.module('starter', [
     }
   })
 
+  .state('app.weather', {
+    url: '/weather/:city/:lat/:long',
+    views: {
+      menuContent: {
+        templateUrl: 'templates/weather/weather.html',
+        controller: 'WeatherCtrl'
+      }
+    }
+  })
+
   .state('app.settings', {
     url: '/settings',
     views: {
@@ -55,13 +66,12 @@ angular.module('starter', [
       }
     }
   })
-///////added the weather state here///////
-  .state('app.weather', {
-    url: "/weather/:city/:lat/:long",
+
+  .state('app.browse', {
+    url: "/browse",
     views: {
       'menuContent': {
-        templateUrl: "templates/weather/weather.html",
-        controller: 'WeatherCtrl'
+        templateUrl: "templates/browse.html"
       }
     }
   })
